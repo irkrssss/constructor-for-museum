@@ -9,10 +9,11 @@
     
     <style>
         :root {
-            --bg: #F5F5F7;          /* Светлый фон */
-            --text: #1D1D1F;        /* Apple Black */
+            --bg: #F5F5F7;
+            --text: #1D1D1F;
             --accent: #0071E3;      /* Tech Blue */
-            --heritage: #8E8E93;    /* Серый для классики */
+            --danger: #FF3B30;      /* Red for "No" */
+            --success: #34C759;     /* Green for "Yes" */
             --border: #D1D1D6;
         }
 
@@ -27,35 +28,12 @@
             overflow-x: hidden;
         }
 
-        /* --- ТИПОГРАФИКА --- */
-        h1, h2, h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
+        h1, h2, h3 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; text-transform: uppercase; }
         h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 20px; }
         h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 40px; }
-        
-        p, li {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
+        p, li { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #333; margin-bottom: 1rem; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; }
 
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* --- СТРУКТУРА --- */
         section {
             min-height: 100vh;
             border-bottom: 1px solid var(--border);
@@ -63,117 +41,50 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
             background: white;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .badge { display: inline-block; border: 1px solid var(--text); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; font-family: 'Inter', sans-serif; }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
+        /* Таблица конкурентов */
+        .comp-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+        .comp-table th { text-align: left; color: #888; font-weight: 400; padding: 15px 10px; border-bottom: 1px solid #ddd; vertical-align: bottom; }
+        .comp-table td { padding: 15px 10px; border-bottom: 1px solid #eee; }
+        .comp-table .our-col { background: rgba(0, 113, 227, 0.05); font-weight: 700; color: var(--accent); border-radius: 12px; border: 1px solid rgba(0, 113, 227, 0.2); }
+        .comp-table .gov-col { color: #888; } /* Стиль для Артефакта */
 
-        /* --- ЭЛЕМЕНТЫ --- */
-        .badge {
-            display: inline-block;
-            border: 1px solid var(--text);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .stat-card {
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-num { font-size: 2.5rem; font-weight: 800; font-family: 'Inter'; color: var(--text); line-height: 1; }
-        .stat-desc { font-size: 0.9rem; font-family: 'Inter'; color: #666; margin-top: 5px; }
-
-        /* --- ВИЗУАЛИЗАЦИЯ ТЕЛЕФОНА (CSS ONLY) --- */
-        .phone-mockup {
-            width: 300px;
-            height: 600px;
-            background: #000;
-            border-radius: 40px;
-            padding: 10px;
+        /* Таймлайн работ */
+        .timeline-item {
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            margin: 0 auto;
-            border: 8px solid #333;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            border-left: 2px solid #eee;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px;
+            border-radius: 50%; background: var(--accent);
+        }
+        .timeline-month { font-family: 'JetBrains Mono'; color: #888; font-size: 0.8em; display: block; margin-bottom: 5px; }
+
+        /* Визуализация телефона */
+        .phone-mockup {
+            width: 300px; height: 600px; background: #000; border-radius: 40px; padding: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); margin: 0 auto; border: 8px solid #333;
         }
         .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1596277258385-48b209d2f2d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
+            border-radius: 32px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
         }
-        .ar-ui-top {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
-        }
-        .ar-card {
-            background: rgba(255,255,255,0.9);
-            margin: 15px;
-            padding: 15px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        .ar-marker {
-            position: absolute;
-            top: 40%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px; height: 100px;
-            border: 2px solid rgba(255,255,255,0.8);
-            border-radius: 10px;
-        }
-        .ar-marker::after {
-            content: 'Наведите на объект';
-            position: absolute;
-            bottom: -30px;
-            width: 150px;
-            left: -25px;
-            text-align: center;
-            color: white;
-            font-size: 10px;
-            font-family: 'Inter';
-        }
-
-        /* --- ТАБЛИЦА КОНКУРЕНТОВ --- */
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-        .comp-table th { text-align: left; color: #888; font-weight: 400; padding: 10px; border-bottom: 1px solid #ddd; }
-        .comp-table td { padding: 15px 10px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
-        .comp-table .our-col { background: rgba(0, 113, 227, 0.05); font-weight: 700; color: var(--accent); border-radius: 10px; }
-        .check { color: green; }
-        .cross { color: #d1d1d6; }
+        .ar-card { background: rgba(255,255,255,0.9); margin: 15px; padding: 15px; border-radius: 15px; backdrop-filter: blur(10px); }
 
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
             section { padding: 40px 20px; }
+            .comp-table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
@@ -185,17 +96,17 @@
             <p class="mono">Digital Heritage Platform</p>
             <h1>AR-Конструктор<br><span style="color: var(--accent);">Иммерсивных гидов</span></h1>
             <p style="max-width: 600px; margin-top: 20px;">
-                Разработка облачной платформы для создания музейных WebXR-экспозиций без написания кода.
+                Облачная платформа для создания музейных WebXR-экспозиций с применением генеративного ИИ.
             </p>
             
             <div style="margin-top: 60px; display: flex; gap: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
                 <div>
-                    <p class="mono" style="margin-bottom: 5px;">Заявитель / Tech Lead</p>
-                    <p style="font-family: 'Inter'; margin:0; font-weight: 600;">Ирина Красавцева</p>
+                    <p class="mono" style="margin-bottom: 5px;">Заявитель / CEO</p>
+                    <p style="font-family: 'Inter'; margin:0; font-weight: 600;">Екатерина Тимохина</p>
                 </div>
                 <div>
-                    <p class="mono" style="margin-bottom: 5px;">Project Manager</p>
-                    <p style="font-family: 'Inter'; margin:0; font-weight: 600;">Екатерина Тимохина</p>
+                    <p class="mono" style="margin-bottom: 5px;">Технический Лидер (CTO)</p>
+                    <p style="font-family: 'Inter'; margin:0; font-weight: 600;">Ирина Красавцева</p>
                 </div>
             </div>
         </div>
@@ -206,20 +117,20 @@
             <div class="grid-2">
                 <div>
                     <h2>Проблематика<br>Рынка</h2>
-                    <p>Рынок цифрового наследия в РФ столкнулся с технологическим вакуумом после ухода зарубежных вендоров и роста стоимости разработки.</p>
+                    <p>Малые музеи и частные коллекции отрезаны от цифровых технологий из-за высокой стоимости разработки и бюрократических барьеров государственных платформ.</p>
                 </div>
                 <div>
-                    <div class="stat-card">
-                        <div class="stat-num">3 млн ₽+</div>
-                        <div class="stat-desc">Минимальная стоимость разработки нативного AR-приложения для музея. Это 80% годового IT-бюджета малого учреждения.</div>
+                    <div style="margin-bottom: 30px; border-left: 4px solid var(--accent); padding-left: 20px;">
+                        <div style="font-size: 2.5rem; font-weight: 800; font-family: 'Inter';">3 млн ₽+</div>
+                        <div style="font-size: 0.9rem; color: #666; font-family: 'Inter';">Стоимость разработки AR-приложения. Неподъемно для 90% музеев.</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-num">95%</div>
-                        <div class="stat-desc">Посетителей не скачивают приложения музеев («Одноразовое использование»). Низкая конверсия в установку.</div>
+                    <div style="margin-bottom: 30px; border-left: 4px solid var(--danger); padding-left: 20px;">
+                        <div style="font-size: 2.5rem; font-weight: 800; font-family: 'Inter';">Бюрократия</div>
+                        <div style="font-size: 0.9rem; color: #666; font-family: 'Inter';">Гос. платформы (Артефакт) требуют сложной модерации и запрещают монетизацию.</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-num">Риски</div>
-                        <div class="stat-desc">Угроза удаления приложений из AppStore/Google Play из-за санкций. Необходимость суверенного Web-решения.</div>
+                    <div style="border-left: 4px solid var(--text); padding-left: 20px;">
+                        <div style="font-size: 2.5rem; font-weight: 800; font-family: 'Inter';">Санкции</div>
+                        <div style="font-size: 0.9rem; color: #666; font-family: 'Inter';">Риск удаления из AppStore. Рынок нуждается в Web-решениях (PWA).</div>
                     </div>
                 </div>
             </div>
@@ -234,85 +145,134 @@
             <table class="comp-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Функционал</th>
-                        <th>AR-Конструктор (Наш проект)</th>
+                        <th style="width: 20%;">Параметр</th>
+                        <th class="our-col" style="width: 30%;">Наш AR-Конструктор</th>
+                        <th class="gov-col">Артефакт (Минкультуры)</th>
                         <th>izi.TRAVEL (Нидерланды)</th>
-                        <th>Заказная разработка (Студии)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Доступность</strong></td>
-                        <td class="our-col">Web (Браузер)</td>
-                        <td>Только Приложение</td>
-                        <td>Приложение</td>
+                        <td><strong>Доступность для авторов</strong></td>
+                        <td class="our-col" style="color: var(--success);">Любые юр. и физ. лица</td>
+                        <td class="gov-col">Только гос. музеи (Реестр)</td>
+                        <td>Любые</td>
                     </tr>
                     <tr>
-                        <td><strong>Стоимость для музея</strong></td>
-                        <td class="our-col">Низкая (Подписка)</td>
-                        <td>Бесплатно (но с рекламой)</td>
-                        <td>Очень высокая (>3 млн ₽)</td>
+                        <td><strong>Скорость запуска</strong></td>
+                        <td class="our-col">1 день (No-code + AI)</td>
+                        <td class="gov-col">Месяцы (Модерация)</td>
+                        <td>1-3 дня (Ручной ввод)</td>
                     </tr>
                     <tr>
-                        <td><strong>AR / Дополненная реальность</strong></td>
-                        <td class="our-col"><i class="fas fa-check check"></i> Есть (WebXR)</td>
-                        <td><i class="fas fa-times cross"></i> Нет (Только аудио)</td>
-                        <td><i class="fas fa-check check"></i> Есть</td>
+                        <td><strong>Монетизация</strong></td>
+                        <td class="our-col" style="color: var(--success);">Есть (Revenue Share)</td>
+                        <td class="gov-col" style="color: var(--danger);">Запрещена</td>
+                        <td>Нет</td>
                     </tr>
                     <tr>
-                        <td><strong>Риск блокировки (Санкции)</strong></td>
-                        <td class="our-col"><i class="fas fa-shield-alt check"></i> Нет (Суверенное ПО)</td>
-                        <td><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Высокий</td>
-                        <td><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Высокий (Стороны)</td>
+                        <td><strong>Технология</strong></td>
+                        <td class="our-col">WebXR (Работает в браузере)</td>
+                        <td class="gov-col">Тяжелое приложение</td>
+                        <td>Только Аудио (Нет AR)</td>
                     </tr>
                     <tr>
-                        <td><strong>Создание контента</strong></td>
-                        <td class="our-col">AI-генерация (Авто)</td>
-                        <td>Ручной ввод</td>
-                        <td>Ручной ввод</td>
+                        <td><strong>Стоимость создания</strong></td>
+                        <td class="our-col">AI снижает косты в 10 раз</td>
+                        <td class="gov-col">Требует проф. фотографов</td>
+                        <td>Требует дикторов</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
+<section>
+        <div class="container">
+            <div class="badge" style="background: var(--text); color: white;">КРИТЕРИИ ОТБОРА</div>
+            <h2>Обоснование<br>Заявки</h2>
+            <p style="margin-bottom: 40px;">Проект полностью соответствует приоритетным направлениям конкурса «Старт-ЦТ-1».</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                
+                <div style="background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--accent); color: white; padding: 5px 15px; font-size: 0.7rem; font-family: 'Inter'; font-weight: 700; border-bottom-left-radius: 10px;">КРИТЕРИЙ 1</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text);">Приоритетные направления</h3>
+                    <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter'; color: #555;">
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i> <strong>Импортозамещение:</strong> Замена ПО izi.TRAVEL и Sketchfab.<br>
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i> <strong>Лот №40:</strong> Мультимедийное ПО.<br>
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i> <strong>Отечественное решение:</strong> Серверы и IP в РФ.
+                    </p>
+                </div>
 
+                <div style="background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--accent); color: white; padding: 5px 15px; font-size: 0.7rem; font-family: 'Inter'; font-weight: 700; border-bottom-left-radius: 10px;">КРИТЕРИЙ 2</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text);">Научная Новизна</h3>
+                    <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter'; color: #555;">
+                        <i class="fas fa-flask" style="color: var(--accent);"></i> Разработка алгоритмов <strong>прогрессивной загрузки</strong> 3D в Web.<br>
+                        <i class="fas fa-flask" style="color: var(--accent);"></i> Создание пайплайна <strong>LLM-оркестрации</strong> для генерации контента.<br>
+                        <i class="fas fa-flask" style="color: var(--accent);"></i> Собственная библиотека <strong>Image Tracking</strong> (JS).
+                    </p>
+                </div>
+
+                <div style="background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--text); color: white; padding: 5px 15px; font-size: 0.7rem; font-family: 'Inter'; font-weight: 700; border-bottom-left-radius: 10px;">КРИТЕРИЙ 3</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text);">Достижимость</h3>
+                    <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter'; color: #555;">
+                        <i class="fas fa-users" style="color: var(--text);"></i> <strong>Команда:</strong> CEO (Product/Marketing) + CTO (Tech/Heritage).<br>
+                        <i class="fas fa-cogs" style="color: var(--text);"></i> <strong>Задел:</strong> Опыт оцифровки (проект Э747).<br>
+                        <i class="fas fa-calendar-check" style="color: var(--text);"></i> Четкий план на 12 месяцев.
+                    </p>
+                </div>
+
+                <div style="background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--success); color: white; padding: 5px 15px; font-size: 0.7rem; font-family: 'Inter'; font-weight: 700; border-bottom-left-radius: 10px;">КРИТЕРИЙ 4</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text);">Коммерциализация</h3>
+                    <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter'; color: #555;">
+                        <i class="fas fa-chart-line" style="color: var(--success);"></i> <strong>Модель:</strong> SaaS + Revenue Share.<br>
+                        <i class="fas fa-bullseye" style="color: var(--success);"></i> <strong>Рынок:</strong> 3000+ малых музеев, частные коллекции.<br>
+                        <i class="fas fa-money-bill-wave" style="color: var(--success);"></i> Высокий спрос на AR-решения.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section style="background: #111; color: white;">
         <div class="container">
             <div class="grid-2" style="align-items: center;">
                 <div>
                     <div class="badge" style="border-color: white; color: white;">РЕШЕНИЕ</div>
                     <h2 style="color: white;">WebXR Платформа</h2>
-                    <p style="color: #ccc;">Облачный сервис, состоящий из двух модулей:</p>
+                    <p style="color: #bbb;">Мы заменяем штат программистов и дикторов на один облачный сервис.</p>
                     
                     <div style="margin-top: 30px;">
-                        <h3 style="font-size: 1.2rem; color: var(--accent); margin-bottom: 10px;">1. Конструктор (Desktop)</h3>
-                        <p style="font-size: 1rem; color: #999; margin-bottom: 20px;">No-code панель для сотрудников. Загрузка фото, 3D-моделей. Встроенный AI пишет тексты экскурсий.</p>
+                        <h3 style="font-size: 1.2rem; color: var(--accent); margin-bottom: 10px;">Для Музея (CMS)</h3>
+                        <p style="font-size: 0.95rem; color: #888; margin-bottom: 20px; font-family: 'Inter';">
+                            Интуитивный конструктор. Загружаете архивную справку -> AI пишет сценарий -> AI озвучивает -> Гид готов.
+                        </p>
                         
-                        <h3 style="font-size: 1.2rem; color: var(--accent); margin-bottom: 10px;">2. Плеер (Mobile Web)</h3>
-                        <p style="font-size: 1rem; color: #999;">Пользователь сканирует QR-код и сразу попадает в AR. Никаких скачиваний.</p>
+                        <h3 style="font-size: 1.2rem; color: var(--accent); margin-bottom: 10px;">Для Посетителя (Web)</h3>
+                        <p style="font-size: 0.95rem; color: #888; font-family: 'Inter';">
+                            Навел камеру на QR-код -> Экскурсия началась. Без скачивания приложений.
+                        </p>
                     </div>
                 </div>
                 
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <div class="ar-ui-top">
-                            <i class="fas fa-bars"></i>
-                            <span style="font-family: 'Inter'; font-weight: 600;">AR Гид: Усадьба N</span>
-                            <i class="fas fa-camera"></i>
+                        <div style="padding: 20px; color: white; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); display: flex; justify-content: space-between;">
+                            <span style="font-family: 'Inter'; font-weight: 600; font-size: 12px;">⚫ LIVE: Усадьба N</span>
+                            <i class="fas fa-expand"></i>
                         </div>
-                        
-                        <div class="ar-marker"></div> <div class="ar-card">
-                            <h4 style="font-family: 'Inter'; font-size: 14px; margin-bottom: 5px; color: black;">Церковь Рождества (1820 г.)</h4>
-                            <p style="font-family: 'Inter'; font-size: 11px; color: #555; margin-bottom: 10px;">
-                                Утраченный памятник архитектуры. Восстановлен цифровым методом.
+                        <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); border: 2px dashed rgba(255,255,255,0.7); width: 120px; height: 120px; border-radius: 12px;"></div>
+                        <div class="ar-card">
+                            <h4 style="font-family: 'Inter'; font-size: 13px; margin-bottom: 5px; color: black;">Флигель (XIX в.)</h4>
+                            <p style="font-family: 'Inter'; font-size: 10px; color: #555; margin-bottom: 10px;">
+                                Объект утрачен в 1917 г. Восстановлен по чертежам.
                             </p>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <div style="background: var(--accent); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-play" style="font-size: 10px;"></i>
-                                </div>
-                                <div style="height: 2px; flex-grow: 1; background: #ddd;">
-                                    <div style="width: 40%; height: 100%; background: var(--accent);"></div>
-                                </div>
+                            <div style="background: #f0f0f0; padding: 8px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-play-circle" style="color: var(--accent);"></i>
+                                <div style="height: 3px; flex-grow: 1; background: #ddd;"><div style="width: 30%; height: 100%; background: var(--accent);"></div></div>
                             </div>
                         </div>
                     </div>
@@ -324,62 +284,51 @@
     <section>
         <div class="container">
             <div class="badge">ДОРОЖНАЯ КАРТА</div>
-            <h2>План Реализации (12 мес.)</h2>
+            <h2>План Работ (12 мес)</h2>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
-                <div style="background: white; padding: 30px; border: 1px solid var(--border); border-radius: 12px;">
-                    <span class="mono">ЭТАП 1 (Месяцы 1-6)</span>
-                    <h3 style="margin: 15px 0; color: var(--accent);">Разработка MVP Ядра</h3>
-                    <ul style="list-style: none; font-family: 'Inter'; font-size: 0.95rem;">
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Проектирование архитектуры БД и API сервера.</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Создание CMS (админки) для загрузки контента.</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Верстка базового веб-плеера (Viewer).</li>
-                        <li><i class="fas fa-file-alt" style="color: #ddd; margin-right: 10px;"></i> <strong>Отчет:</strong> Техническая документация, Акт этапа 1.</li>
-                    </ul>
-                </div>
-
-                <div style="background: white; padding: 30px; border: 1px solid var(--border); border-radius: 12px;">
-                    <span class="mono">ЭТАП 2 (Месяцы 7-12)</span>
-                    <h3 style="margin: 15px 0; color: var(--accent);">AR-Модуль и AI</h3>
-                    <ul style="list-style: none; font-family: 'Inter'; font-size: 0.95rem;">
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Разработка модуля WebXR (трекинг изображений JS).</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Интеграция API генеративных сетей (LLM + TTS).</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #ddd; margin-right: 10px;"></i> Пилотное тестирование на реальном объекте.</li>
-                        <li><i class="fas fa-certificate" style="color: #ddd; margin-right: 10px;"></i> <strong>Отчет:</strong> Регистрация ПО в Роспатенте.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="badge">БЮДЖЕТ ПРОЕКТА</div>
-            <h2>Смета Расходов</h2>
-            <div class="grid-2">
                 <div>
-                    <p class="mono" style="font-size: 1.5rem; color: var(--accent); margin-bottom: 20px;">Грант: 4 000 000 ₽</p>
-                    <p>Средства гранта направляются преимущественно на оплату труда высококвалифицированных специалистов для создания сложного программного продукта.</p>
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 1: Ядро (MVP)</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 1-2</span>
+                        <strong>Проектирование и Дизайн</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Разработка архитектуры БД (PostgreSQL). Прототипирование UI/UX административной панели.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 3-4</span>
+                        <strong>Разработка CMS и Backend</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Реализация API. Система загрузки и оптимизации медиафайлов. Модуль авторизации пользователей.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 5-6</span>
+                        <strong>Веб-Плеер v1.0</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Верстка адаптивного плеера на Three.js. Реализация проигрывания аудиогидов. Внутреннее тестирование.</p>
+                    </div>
                 </div>
-                <div style="background: #fff; border: 1px solid var(--border); padding: 20px; border-radius: 12px;">
-                    <table style="width: 100%; border-collapse: collapse; font-family: 'Inter'; font-size: 0.9rem;">
-                        <tr style="border-bottom: 1px solid #eee;">
-                            <td style="padding: 15px 0;"><strong>Фонд оплаты труда (ФОТ)</strong><br><span style="color: #888; font-size: 0.8em;">Backend dev, Frontend (WebGL) dev, UI Designer</span></td>
-                            <td style="text-align: right; font-weight: 700;">2 800 000 ₽</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #eee;">
-                            <td style="padding: 15px 0;"><strong>Начисления на ФОТ</strong><br><span style="color: #888; font-size: 0.8em;">Страховые взносы (30%)</span></td>
-                            <td style="text-align: right; font-weight: 700;">840 000 ₽</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #eee;">
-                            <td style="padding: 15px 0;"><strong>Работы соисполнителей</strong><br><span style="color: #888; font-size: 0.8em;">Разработка брендбука интерфейса, юридическая упаковка (оферты)</span></td>
-                            <td style="text-align: right; font-weight: 700;">360 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 15px 0; font-size: 1.1em;"><strong>ИТОГО</strong></td>
-                            <td style="text-align: right; font-weight: 800; color: var(--accent); font-size: 1.1em;">4 000 000 ₽</td>
-                        </tr>
-                    </table>
+
+                <div>
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 2: AR и AI</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 7-8</span>
+                        <strong>Модуль WebXR</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Интеграция библиотек компьютерного зрения (MindAR/OpenCV) для трекинга изображений в браузере.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 9-10</span>
+                        <strong>Интеграция Нейросетей</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Подключение API LLM для генерации текстов. Подключение Text-to-Speech. Оптимизация задержек.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 11-12</span>
+                        <strong>Релиз и IP</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Нагрузочное тестирование. Пилотный проект с партнерским музеем. Получение свидетельства Роспатента на ПО.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -388,48 +337,99 @@
     <section>
         <div class="container">
             <div class="badge">КОМАНДА</div>
-            <h2>Ключевые Участники</h2>
+            <h2>Ключевые Роли</h2>
             <div class="grid-2">
-                <div style="padding: 30px; border: 1px solid var(--border); border-radius: 12px; transition: 0.3s hover;">
-                    <div style="width: 60px; height: 60px; background: var(--text); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 20px;">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Ирина Красавцева</h3>
-                    <p class="mono" style="margin-bottom: 15px;">Tech Lead / Заявитель</p>
-                    <p style="font-size: 0.95rem;">Руководство разработкой. Архитектура продукта. Экспертиза в Digital Heritage и работе с архивными данными.</p>
+                <div style="padding: 30px; border: 1px solid var(--border); border-radius: 12px; background: #fff;">
+                    <div style="margin-bottom: 15px; color: var(--accent); font-size: 2rem;"><i class="fas fa-user-tie"></i></div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 5px; text-transform: none;">Екатерина Тимохина</h3>
+                    <p class="mono" style="margin-bottom: 10px;">Заявитель / CEO / Product</p>
+                    <ul style="font-family: 'Inter'; font-size: 0.9rem; padding-left: 20px; color: #555;">
+                        <li style="margin-bottom: 5px;">Стратегическое управление проектом</li>
+                        <li style="margin-bottom: 5px;">Маркетинг и Customer Development</li>
+                        <li>Взаимодействие с Фондом и партнерами</li>
+                    </ul>
                 </div>
 
-                <div style="padding: 30px; border: 1px solid var(--border); border-radius: 12px;">
-                    <div style="width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 20px;">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Екатерина Тимохина</h3>
-                    <p class="mono" style="margin-bottom: 15px;">Project Manager / Marketing</p>
-                    <p style="font-size: 0.95rem;">Управление сроками (Scrum). Вывод продукта на рынок (Go-to-Market strategy). Работа с партнерами и музеями.</p>
+                <div style="padding: 30px; border: 1px solid var(--border); border-radius: 12px; background: #fff;">
+                    <div style="margin-bottom: 15px; color: var(--text); font-size: 2rem;"><i class="fas fa-code"></i></div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 5px; text-transform: none;">Ирина Красавцева</h3>
+                    <p class="mono" style="margin-bottom: 10px;">Tech Lead / Архитектор</p>
+                    <ul style="font-family: 'Inter'; font-size: 0.9rem; padding-left: 20px; color: #555;">
+                        <li style="margin-bottom: 5px;">Разработка архитектуры системы</li>
+                        <li style="margin-bottom: 5px;">Экспертиза в Digital Heritage</li>
+                        <li>Контроль качества кода и R&D</li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="badge">ИНВЕСТИЦИИ</div>
+            <h2>Смета Расходов</h2>
+            <p style="margin-bottom: 40px; max-width: 800px;">
+                Средства гранта (4 млн ₽) покрывают ФОТ команды разработки, что позволяет сосредоточиться на создании качественного кода без отвлечения на коммерческие заказы.
+            </p>
+            
+            <div style="background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; font-family: 'Inter';">
+                    <tr style="background: #f9f9f9; border-bottom: 1px solid #eee;">
+                        <th style="text-align: left; padding: 20px; color: #666;">Статья расходов</th>
+                        <th style="text-align: right; padding: 20px; color: #666;">Сумма</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 20px;">
+                            <strong>Заработная плата (ФОТ)</strong>
+                            <div style="font-size: 0.85rem; color: #888; margin-top: 5px;">
+                                Оплата труда: Backend Dev, Frontend (WebGL) Dev, UI Designer
+                            </div>
+                        </td>
+                        <td style="text-align: right; padding: 20px; font-weight: 600;">2 800 000 ₽</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 20px;">
+                            <strong>Начисления на ФОТ</strong>
+                            <div style="font-size: 0.85rem; color: #888; margin-top: 5px;">
+                                Страховые взносы в фонды (30%)
+                            </div>
+                        </td>
+                        <td style="text-align: right; padding: 20px; font-weight: 600;">840 000 ₽</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 20px;">
+                            <strong>Работы соисполнителей</strong>
+                            <div style="font-size: 0.85rem; color: #888; margin-top: 5px;">
+                                Юридическая обвязка (оферты), разработка брендбука
+                            </div>
+                        </td>
+                        <td style="text-align: right; padding: 20px; font-weight: 600;">410 000 ₽</td>
+                    </tr>
+                    <tr style="background: rgba(0, 113, 227, 0.05);">
+                        <td style="padding: 20px; font-size: 1.2rem; font-weight: 700; color: var(--accent);">ИТОГО ГРАНТ</td>
+                        <td style="text-align: right; padding: 20px; font-size: 1.2rem; font-weight: 700; color: var(--accent);">4 050 000 ₽</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </section>
 
     <section style="background: var(--text); color: white;">
         <div class="container" style="text-align: center;">
-            <p class="mono" style="color: var(--accent);">READY TO LAUNCH</p>
+            <p class="mono" style="color: var(--accent);">ДАВАЙТЕ СОХРАНЯТЬ ИСТОРИЮ ВМЕСТЕ</p>
             <h2 style="color: white; margin-top: 20px;">Спасибо за внимание!</h2>
-            <p style="color: #999; max-width: 600px; margin: 0 auto 40px auto;">
-                Проект готов к старту. Команда сформирована. Техническое видение проработано.
-            </p>
             
-            <div style="display: inline-block; text-align: left; border: 1px solid #333; padding: 30px; border-radius: 12px;">
-                <p class="mono" style="margin-bottom: 5px; color: #666;">EMAIL</p>
-                <p style="font-family: 'Inter'; font-size: 1.2rem; margin-bottom: 20px; color: white;">[Ваш Email]</p>
+            <div style="display: inline-block; text-align: left; border: 1px solid #333; padding: 40px; border-radius: 20px; margin-top: 40px; min-width: 300px;">
+                <p class="mono" style="margin-bottom: 5px; color: #888;">ЗАЯВИТЕЛЬ</p>
+                <p style="font-family: 'Inter'; font-size: 1.3rem; margin-bottom: 30px; color: white;">Екатерина Тимохина</p>
                 
-                <p class="mono" style="margin-bottom: 5px; color: #666;">ТЕЛЕФОН</p>
-                <p style="font-family: 'Inter'; font-size: 1.2rem; color: white; margin: 0;">[Ваш Телефон]</p>
+                <p class="mono" style="margin-bottom: 5px; color: #888;">EMAIL</p>
+                <p style="font-family: 'Inter'; font-size: 1.3rem; margin-bottom: 30px; color: white;">[Email Екатерины]</p>
+                
+                <p class="mono" style="margin-bottom: 5px; color: #888;">PHONE</p>
+                <p style="font-family: 'Inter'; font-size: 1.3rem; color: white; margin: 0;">[Телефон Екатерины]</p>
             </div>
             
-            <p style="margin-top: 60px; font-size: 0.8rem; color: #444; font-family: 'Inter';">
-                Белград — Москва, 2026
-            </p>
         </div>
     </section>
 
