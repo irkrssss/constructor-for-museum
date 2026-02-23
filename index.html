@@ -360,22 +360,66 @@
         </div>
     </section>
 
-    <section>
+<section>
         <div class="container">
-            <div class="badge">ПЛАН</div>
-            <h2>Дорожная Карта (12 мес)</h2>
-            <div class="grid-2">
+            <div class="badge">ПЛАН РЕАЛИЗАЦИИ</div>
+            <h2>Дорожная Карта (12 мес.)</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                
                 <div>
-                    <h3 style="color: var(--accent);">Этап 1: Суверенное Ядро</h3>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 1-2</span><strong>Архитектура и БД</strong><p style="font-size:0.8rem;">Серверы РФ. PostgreSQL.</p></div>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 3-4</span><strong>No-code CMS</strong><p style="font-size:0.8rem;">Админка. Загрузка медиа.</p></div>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 5-6</span><strong>MVP Плеера</strong><p style="font-size:0.8rem;">WebGL/Three.js. Тесты.</p></div>
+                    <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.2rem;">Этап 1: Суверенное Ядро (MVP)</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 1-2</span>
+                        <strong>Архитектура и БД</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            Проектирование базы данных на PostgreSQL. Развертывание инфраструктуры на российских серверах (Selectel/Yandex). Отказ от Amazon AWS.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 3-4</span>
+                        <strong>No-code CMS</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            Разработка интерфейса администратора (Frontend: React/Vue). Реализация модуля загрузки и конвертации медиа-файлов без использования зарубежных API.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 5-6</span>
+                        <strong>Web-Плеер v1.0</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            Верстка клиентской части. Реализация аудиогида и 3D-просмотрщика на базе свободных библиотек (Three.js). Внутреннее тестирование.
+                        </p>
+                    </div>
                 </div>
+
                 <div>
-                    <h3 style="color: var(--accent);">Этап 2: R&D и Релиз</h3>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 7-8</span><strong>Модуль AR</strong><p style="font-size:0.8rem;">Собственный CV-движок (замена Vuforia).</p></div>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 9-10</span><strong>Интеграция ИИ</strong><p style="font-size:0.8rem;">Локальные LLM для текстов.</p></div>
-                    <div class="timeline-item"><span class="timeline-month">МЕСЯЦ 11-12</span><strong>Релиз</strong><p style="font-size:0.8rem;">Роспатент. Реестр ПО. Пилот.</p></div>
+                    <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.2rem;">Этап 2: R&D и Внедрение</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 7-8</span>
+                        <strong>Модуль AR (Свой CV)</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            Разработка собственных алгоритмов трекинга маркеров в браузере (замещение Vuforia). Оптимизация производительности WebAssembly.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 9-10</span>
+                        <strong>Интеграция ИИ</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            Развертывание локальных LLM (Saiga/Llama) для генерации текстов. Обучение модели на музейных датасетах.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-month">МЕСЯЦ 11-12</span>
+                        <strong>Релиз и Реестр ПО</strong>
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            [cite_start]Пилотное внедрение в партнерском музее. Регистрация программы в Роспатенте. Подача заявки в Реестр отечественного ПО[cite: 59].
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -383,16 +427,48 @@
 
     <section>
         <div class="container">
-            <div class="badge">БЮДЖЕТ</div>
-            <h2>Инвестиции (4 млн ₽)</h2>
+            <div class="badge">ИНВЕСТИЦИИ</div>
+            <h2>Смета Расходов</h2>
             <div class="grid-2">
-                <div><p>Средства гранта покрывают ФОТ команды для создания Deep Tech продукта.</p></div>
-                <div class="card-box" style="padding:0;">
-                    <table class="comp-table" style="margin:0;">
-                        <tr><td style="padding:15px;"><strong>ФОТ (Backend, Frontend, Design)</strong></td><td style="text-align:right; font-weight:600;">2 800 000 ₽</td></tr>
-                        <tr><td style="padding:15px;"><strong>Начисления (30%)</strong></td><td style="text-align:right; font-weight:600;">840 000 ₽</td></tr>
-                        <tr><td style="padding:15px;"><strong>Соисполнители (Юристы, Бренд)</strong></td><td style="text-align:right; font-weight:600;">510 000 ₽</td></tr>
-                        <tr style="background:var(--accent); color:white;"><td style="padding:15px;"><strong>ИТОГО</strong></td><td style="text-align:right; font-weight:600;">4 150 000 ₽</td></tr>
+                <div>
+                    <p>
+                        Запрашиваемая сумма гранта (4 млн ₽) направляется преимущественно на ФОТ квалифицированной команды разработки, что необходимо для создания сложного наукоемкого продукта (Deep Tech).
+                    </p>
+                </div>
+                <div style="background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; font-family: 'Inter'; font-size: 0.9rem;">
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 15px;">
+                                <strong>1. Заработная плата (ФОТ)</strong>
+                                <ul style="margin: 5px 0 0 15px; font-size: 0.75rem; color: #666;">
+                                    <li>Backend Developer (Node.js/Python)</li>
+                                    <li>Frontend Developer (WebGL/Three.js)</li>
+                                    <li>UI/UX Designer</li>
+                                </ul>
+                            </td>
+                            <td style="text-align: right; padding: 15px; vertical-align: top; font-weight: 600;">2 800 000 ₽</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 15px;">
+                                <strong>2. Начисления на ФОТ</strong>
+                                <div style="font-size: 0.75rem; color: #666; margin-top: 5px;">Страховые взносы в фонды (30%)</div>
+                            </td>
+                            <td style="text-align: right; padding: 15px; font-weight: 600;">840 000 ₽</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 15px;">
+                                <strong>3. Работы соисполнителей</strong>
+                                <ul style="margin: 5px 0 0 15px; font-size: 0.75rem; color: #666;">
+                                    <li>Юридическая упаковка (Оферты, ПДн)</li>
+                                    <li>Разработка брендбука интерфейса</li>
+                                </ul>
+                            </td>
+                            <td style="text-align: right; padding: 15px; vertical-align: top; font-weight: 600;">510 000 ₽</td>
+                        </tr>
+                        <tr style="background: rgba(0, 113, 227, 0.05);">
+                            <td style="padding: 15px; font-weight: 700; color: var(--accent);">ИТОГО ЗАПРАШИВАЕМАЯ СУММА</td>
+                            <td style="text-align: right; padding: 15px; font-weight: 700; color: var(--accent);">4 150 000 ₽</td>
+                        </tr>
                     </table>
                 </div>
             </div>
