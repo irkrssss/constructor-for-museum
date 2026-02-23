@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация Старт-ЦТ-1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Кастомные стили для соответствия брендбуку Фонда (примерно) */
+        .reveal h1, .reveal h2, .reveal h3 { color: #2c3e50; text-transform: none; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 30px; }
+        .accent { color: #3498db; font-weight: bold; }
+        .text-left { text-align: left; }
+        .container { display: flex; justify-content: space-between; align-items: center; }
+        .col { flex: 1; padding: 10px; }
+        .card { background: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px; font-size: 0.8em; }
+        ul { font-size: 0.9em !important; }
+        li { margin-bottom: 10px; }
+        .reveal .slide-number { font-size: 24px; color: #3498db; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h3>Конкурс «Старт-ЦТ-1» (очередь 2)</h3>
+                <h1 style="font-size: 2em;">AR-Constructor</h1>
+                <p>Облачная no-code платформа для создания<br>иммерсивных WebXR-экспозиций</p>
+                <div style="margin-top: 50px; font-size: 0.8em; color: #7f8c8d;">
+                    <p><strong>Лот №40:</strong> Мультимедийное ПО</p>
+                    <p><strong>Заявитель:</strong> [Ваше ФИО]</p>
+                    <p>2026 г.</p>
+                </div>
+            </section>
+
+            <section class="text-left">
+                <h2>Проблема рынка Digital Heritage</h2>
+                <div class="container">
+                    <div class="col">
+                        <ul>
+                            <li><i class="fas fa-ban accent"></i> <strong>Санкционные риски:</strong> Удаление приложений музеев из AppStore и Google Play.</li>
+                            <li><i class="fas fa-money-bill-wave accent"></i> <strong>Высокий порог входа:</strong> Стоимость разработки нативного AR-приложения — от 3 млн руб. Это неподъемно для малых музеев.</li>
+                            <li><i class="fas fa-download accent"></i> <strong>Низкая конверсия:</strong> Пользователи не хотят скачивать "одноразовые" приложения ради одной выставки.</li>
+                        </ul>
+                    </div>
+                    <div class="col" style="text-align: center;">
+                        <i class="fas fa-mobile-alt" style="font-size: 5em; color: #e74c3c;"></i>
+                        <p style="font-size: 0.6em;">Традиционные App требуют установки<br>и стоят дорого</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Наше решение: WebXR Платформа</h2>
+                <p>SaaS-конструктор, позволяющий создавать AR-гиды без кода.</p>
+                <div class="container" style="align-items: stretch;">
+                    <div class="col card">
+                        <i class="fas fa-globe accent" style="font-size: 2em;"></i>
+                        <h4>Работает в браузере</h4>
+                        <p>Никаких установок. Навел камеру на QR-код — экскурсия началась мгновенно (PWA).</p>
+                    </div>
+                    <div class="col card">
+                        <i class="fas fa-magic accent" style="font-size: 2em;"></i>
+                        <h4>No-Code редактор</h4>
+                        <p>Музейный сотрудник сам собирает сцену: загружает фото, 3D-модели и аудио.</p>
+                    </div>
+                    <div class="col card">
+                        <i class="fas fa-robot accent" style="font-size: 2em;"></i>
+                        <h4>AI-генерация</h4>
+                        <p>Встроенные нейросети сами пишут текст экскурсии и озвучивают его.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-left">
+                <h2>Научно-техническая новизна</h2>
+                <ul>
+                    <li><strong>Алгоритмы WebXR оптимизации:</strong> Уникальный метод прогрессивной загрузки «тяжелых» 3D-ассетов (GLB/USDZ), позволяющий AR работать даже на мобильном интернете 3G/4G.</li>
+                    <li><strong>LLM-оркестрация:</strong> Разработка конвейера (pipeline) для автоматической генерации исторически достоверного контента на основе "сырых" архивных данных.</li>
+                    <li><strong>Кроссплатформенный трекинг:</strong> Собственная библиотека распознавания образов (Image Tracking) на JavaScript, замещающая проприетарные решения Vuforia/8th Wall.</li>
+                </ul>
+                <p class="accent" style="margin-top: 20px;">Импортозамещение: izi.TRAVEL, Sketchfab, Matterport.</p>
+            </section>
+
+            <section>
+                <h2>Коммерциализация</h2>
+                <div class="container">
+                    <div class="col text-left">
+                        <h3>1. B2B Подписка (SaaS)</h3>
+                        <p>Ежемесячная оплата за использование конструктора.</p>
+                        <ul>
+                            <li>Малые музеи: 5 000 ₽/мес.</li>
+                            <li>Крупные фонды: от 50 000 ₽/мес.</li>
+                        </ul>
+                    </div>
+                    <div class="col text-left">
+                        <h3>2. Revenue Share (B2B2C)</h3>
+                        <p>Комиссия 10% с продажи цифровых билетов.</p>
+                        <p style="font-size: 0.8em; color: gray;">Пример: Частный музей продает AR-квест за 300 руб. Мы получаем 30 руб. с транзакции.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Потенциальные потребители</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="card">
+                        <i class="fas fa-landmark accent"></i><br>
+                        <strong>Частные и малые музеи</strong><br>
+                        Более 3000 в РФ. Им нужен дешевый вход в «цифру».
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-tree accent"></i><br>
+                        <strong>Генеалогические агентства</strong><br>
+                        Создание виртуальных мемориалов и цифровых древ рода.
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-city accent"></i><br>
+                        <strong>Туризм и города</strong><br>
+                        Уличные AR-квесты по утраченным зданиям.
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-briefcase accent"></i><br>
+                        <strong>Корпоративные музеи</strong><br>
+                        История заводов и брендов в AR.
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>План реализации (12 месяцев)</h2>
+                <div class="text-left" style="font-size: 0.85em;">
+                    <h4 class="accent">Этап 1 (Месяцы 1-6): MVP Платформы</h4>
+                    <ul>
+                        <li>Разработка архитектуры Backend и базы данных контента.</li>
+                        <li>Создание No-code редактора (CMS) для загрузки медиа.</li>
+                        <li>Реализация Web-плеера (без AR) для тестов.</li>
+                    </ul>
+                    <h4 class="accent">Этап 2 (Месяцы 7-12): AR и AI</h4>
+                    <ul>
+                        <li>Разработка модуля WebXR (распознавание маркеров в браузере).</li>
+                        <li>Интеграция генеративных моделей (текст + голос).</li>
+                        <li>Пилотное внедрение (Кейс: «Виртуальная деревня» / Партнерский музей).</li>
+                        <li>Регистрация ПО в Роспатенте.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Команда проекта</h2>
+                <div class="container">
+                    <div class="col card">
+                        <i class="fas fa-user-circle" style="font-size: 3em; color: #34495e;"></i>
+                        <h4>[Ваше Имя]</h4>
+                        <p class="accent">Руководитель проекта</p>
+                        <ul style="font-size: 0.8em;">
+                            <li>Опыт в управлении проектами</li>
+                            <li>Экспертиза в Digital Heritage</li>
+                            <li>Product Management</li>
+                        </ul>
+                    </div>
+                    <div class="col card">
+                        <i class="fas fa-code" style="font-size: 3em; color: #34495e;"></i>
+                        <h4>Вакансия / Партнер</h4>
+                        <p class="accent">Lead Fullstack Developer</p>
+                        <ul style="font-size: 0.8em;">
+                            <li>JavaScript / Three.js / WebGL</li>
+                            <li>Опыт разработки PWA</li>
+                            <li>Архитектура высоконагруженных систем</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Смета расходов</h2>
+                <p>Запрашиваемая сумма гранта: <strong>4 млн руб.</strong></p>
+                <div style="width: 80%; margin: 0 auto;">
+                    <table style="font-size: 0.7em; width: 100%;">
+                        <tr style="border-bottom: 2px solid #ddd;">
+                            <th style="text-align: left;">Статья расходов</th>
+                            <th style="text-align: right;">Сумма</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Фонд оплаты труда (Разработчики, PM)</td>
+                            <td style="text-align: right;">2.8 млн ₽</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Начисления на ФОТ (30%)</td>
+                            <td style="text-align: right;">0.84 млн ₽</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Услуги сторонних организаций (Дизайн/Юр.)</td>
+                            <td style="text-align: right;">0.36 млн ₽</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Спасибо за внимание!</h2>
+                <p>Проект готов к реализации.</p>
+                <div style="margin-top: 50px;">
+                    <p><i class="fas fa-envelope accent"></i> [Ваш Email]</p>
+                    <p><i class="fas fa-phone accent"></i> [Ваш Телефон]</p>
+                </div>
+                <p style="font-size: 0.6em; margin-top: 50px; color: grey;">Белград — Москва, 2026</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            // Больше настроек тут: https://revealjs.com/config/
+        });
+    </script>
+</body>
+</html>
