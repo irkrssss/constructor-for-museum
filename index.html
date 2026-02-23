@@ -218,8 +218,8 @@
                     <div style="position: absolute; top: 0; right: 0; background: var(--text); color: white; padding: 5px 15px; font-size: 0.7rem; font-family: 'Inter'; font-weight: 700; border-bottom-left-radius: 10px;">КРИТЕРИЙ 3</div>
                     <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text);">Достижимость</h3>
                     <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter'; color: #555;">
-                        <i class="fas fa-users" style="color: var(--text);"></i> <strong>Команда:</strong> CEO (Product/Marketing) + CTO (Tech/Heritage).<br>
-                        <i class="fas fa-cogs" style="color: var(--text);"></i> <strong>Задел:</strong> Опыт оцифровки (проект Э747).<br>
+                        <i class="fas fa-users" style="color: var(--text);"></i> <strong>Команда:</strong> Команда, имеющая опыт в разработке цифровых продуктов.<br>
+                        <i class="fas fa-cogs" style="color: var(--text);"></i> <strong>Задел:</strong> Виртуальные музеи.<br>
                         <i class="fas fa-calendar-check" style="color: var(--text);"></i> Четкий план на 12 месяцев.
                     </p>
                 </div>
@@ -281,53 +281,68 @@
         </div>
     </section>
 
-    <section>
+<section>
         <div class="container">
             <div class="badge">ДОРОЖНАЯ КАРТА</div>
             <h2>План Работ (12 мес)</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px;">
+                Фокус на создании независимого от зарубежных лицензий программного стека.
+            </p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
-                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 1: Ядро (MVP)</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 1: Суверенное Ядро</h3>
                     
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 1-2</span>
-                        <strong>Проектирование и Дизайн</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Разработка архитектуры БД (PostgreSQL). Прототипирование UI/UX административной панели.</p>
+                        <strong>Архитектура и БД</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Развертывание инфраструктуры на российских серверах (Яндекс.Облако / Selectel). Проектирование защищенной БД.
+                        </p>
                     </div>
                     
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 3-4</span>
-                        <strong>Разработка CMS и Backend</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Реализация API. Система загрузки и оптимизации медиафайлов. Модуль авторизации пользователей.</p>
+                        <strong>Backend и CMS</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Разработка собственной CMS. Модуль хранения данных на территории РФ.
+                        </p>
                     </div>
 
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 5-6</span>
-                        <strong>Веб-Плеер v1.0</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Верстка адаптивного плеера на Three.js. Реализация проигрывания аудиогидов. Внутреннее тестирование.</p>
+                        <strong>Отечественный Web-Плеер</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Реализация движка визуализации на базе открытых стандартов (WebGL).
+                        </p>
                     </div>
                 </div>
 
                 <div>
-                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 2: AR и AI</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Этап 2: AI и Локализация</h3>
                     
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 7-8</span>
-                        <strong>Модуль WebXR</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Интеграция библиотек компьютерного зрения (MindAR/OpenCV) для трекинга изображений в браузере.</p>
+                        <strong>WebXR Модуль</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Разработка собственных алгоритмов трекинга изображений (CV), замещающих библиотеки 8th Wall / Vuforia.
+                        </p>
                     </div>
 
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 9-10</span>
-                        <strong>Интеграция Нейросетей</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Подключение API LLM для генерации текстов. Подключение Text-to-Speech. Оптимизация задержек.</p>
+                        <strong>Локальный ИИ (LLM)</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Файн-тюнинг (дообучение) открытых языковых моделей на исторических датасетах.
+                        </p>
                     </div>
 
                     <div class="timeline-item">
                         <span class="timeline-month">МЕСЯЦ 11-12</span>
-                        <strong>Релиз и IP</strong>
-                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">Нагрузочное тестирование. Пилотный проект с партнерским музеем. Получение свидетельства Роспатента на ПО.</p>
+                        <strong>Регистрация ПО</strong>
+                        <p style="font-size: 0.9rem; margin: 0; font-family: 'Inter';">
+                            Получение свидетельства о регистрации программы для ЭВМ в Роспатенте. Внесение в Реестр отечественного ПО.
+                        </p>
                     </div>
                 </div>
             </div>
