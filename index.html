@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR-Конструктор: Полная Заявка Старт-ЦТ-1</title>
+    <title>AR-Конструктор: Исправленная версия</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -35,15 +35,7 @@
         h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; }
         h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--text); }
         
-        p, li { 
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem; 
-            color: #444; 
-            margin-bottom: 0.8rem; 
-            font-weight: 400;
-        }
-        
-        strong { color: #000; font-weight: 600; }
+        p, li { font-size: 0.95rem; color: #444; margin-bottom: 0.8rem; font-weight: 400; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 700; }
 
         section {
@@ -58,58 +50,135 @@
         }
 
         .container { max-width: 1200px; margin: 0 auto; width: 100%; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; align-items: start; margin-bottom: 40px; }
+        
+        /* Сетки */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; margin-bottom: 40px; }
 
         .badge { display: inline-block; border: 1px solid var(--text); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; font-family: 'Inter', sans-serif; background: white; }
 
-        /* ИНФОГРАФИКА */
-        .market-circles { position: relative; width: 350px; height: 350px; margin: 0 auto; }
-        .circle { position: absolute; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: flex-start; justify-content: center; padding-top: 15px; text-align: center; }
-        .tam { width: 100%; height: 100%; background: #E3F2FD; border: 2px solid #BBDEFB; z-index: 1; }
-        .sam { width: 70%; height: 70%; background: #BBDEFB; border: 2px solid #64B5F6; z-index: 2; }
-        .som { width: 40%; height: 40%; background: var(--accent); border: 2px solid #1565C0; z-index: 3; color: white; box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4); }
-        .market-label { font-family: 'Inter'; font-weight: 700; font-size: 0.8rem; margin-top: 10px; display: block; }
-        .market-value { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 1.1rem; display: block; }
+        /* --- ИСПРАВЛЕНИЕ: КРУГИ (TAM/SAM/SOM) --- */
+        .market-circles-container {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            margin: 0 auto;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Текст сверху */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .tam { width: 100%; height: 100%; background: #E3F2FD; border: 2px solid #BBDEFB; z-index: 1; padding-top: 20px; }
+        .sam { width: 70%; height: 70%; background: #BBDEFB; border: 2px solid #64B5F6; z-index: 2; padding-top: 25px; }
+        .som { width: 40%; height: 40%; background: var(--accent); border: 2px solid #1565C0; z-index: 3; color: white; padding-top: 35px; box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4); justify-content: center; padding-top:0; } /* SOM по центру */
+        
+        .market-label { font-family: 'Inter'; font-weight: 700; font-size: 0.8rem; line-height: 1.2; margin-bottom: 2px; display: block;}
+        .market-value { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 1rem; display: block;}
 
-        /* ГРАФИКИ */
-        .chart-container { display: flex; align-items: flex-end; height: 200px; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd; margin-top: 20px;}
-        .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; }
-        .bar { width: 40px; background: var(--chart-bg); border-radius: 6px 6px 0 0; position: relative; }
+        /* --- ИСПРАВЛЕНИЕ: ГРАФИКИ --- */
+        .chart-container { 
+            display: flex; 
+            align-items: flex-end; 
+            height: 220px; 
+            gap: 20px; 
+            padding-bottom: 40px; /* Больше места для подписей */
+            border-bottom: 1px solid #ddd; 
+            margin-top: 20px;
+        }
+        .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; height: 100%; justify-content: flex-end; }
+        .bar { width: 100%; max-width: 60px; background: var(--chart-bg); border-radius: 6px 6px 0 0; position: relative; min-height: 2px;}
         .bar.highlight { background: var(--accent); }
-        .bar-label { margin-top: 10px; font-family: 'Inter'; font-size: 0.7rem; text-align: center; font-weight: 600; color: #555; line-height: 1.2; }
-        .bar-value { position: absolute; top: -25px; width: 150%; left: -25%; text-align: center; font-family: 'JetBrains Mono'; font-weight: 700; font-size: 0.8rem; }
+        
+        /* Подписи под графиком */
+        .bar-label { 
+            position: absolute; 
+            bottom: -35px; 
+            width: 100%; 
+            font-family: 'Inter'; 
+            font-size: 0.75rem; 
+            text-align: center; 
+            font-weight: 600; 
+            color: #555; 
+            line-height: 1.1; 
+        }
+        
+        /* Значения над графиком */
+        .bar-value { 
+            position: absolute; 
+            top: -25px; 
+            width: 100%; 
+            text-align: center; 
+            font-family: 'JetBrains Mono'; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            color: #000;
+        }
 
-        /* ВОРОНКА */
-        .funnel-container { display: flex; gap: 5px; align-items: flex-end; height: 120px; margin-top: 20px; }
+        /* --- ИСПРАВЛЕНИЕ: ВОРОНКА --- */
+        .funnel-container { display: flex; gap: 5px; align-items: flex-end; height: 150px; margin-top: 40px; }
         .funnel-step { position: relative; height: 100%; width: 33%; border-radius: 4px 4px 0 0; }
-        .funnel-label { position: absolute; top: 10px; left: 5px; font-size: 0.7rem; font-family: 'Inter'; line-height: 1.2; color: white; font-weight: 600; }
-        .funnel-sub { position: absolute; bottom: -40px; left: 0; font-size: 0.7rem; color: #666; width: 100%; }
+        .funnel-label { position: absolute; top: 10px; left: 10px; font-size: 0.75rem; font-family: 'Inter'; line-height: 1.2; color: white; font-weight: 700; }
+        .funnel-sub { position: absolute; bottom: -45px; left: 0; font-size: 0.75rem; color: #666; width: 100%; line-height: 1.2; }
 
         /* КАРТОЧКИ */
-        .problem-card { border-left: 3px solid #ddd; padding-left: 20px; height: 100%; }
-        .problem-card h3 { color: var(--danger); font-size: 1rem; }
+        .problem-card { border-left: 4px solid #ddd; padding-left: 20px; }
+        .problem-card h3 { color: var(--danger); font-size: 1rem; margin-bottom: 10px; }
         .card-box { background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; height: 100%; }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .card-icon { font-size: 1.2rem; color: var(--accent); }
+        .card-icon { font-size: 1.5rem; color: var(--accent); }
 
         /* ТАБЛИЦА */
-        .comp-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+        .comp-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
         .comp-table th { text-align: left; color: #888; font-weight: 400; padding: 15px 10px; border-bottom: 1px solid #ddd; vertical-align: bottom; }
         .comp-table td { padding: 15px 10px; border-bottom: 1px solid #eee; vertical-align: top;}
         .comp-table .our-col { background: rgba(0, 113, 227, 0.05); font-weight: 700; color: var(--accent); border-radius: 12px; border: 1px solid rgba(0, 113, 227, 0.2); }
         .comp-table .gov-col { color: #888; background: #f9f9f9; } 
 
-        /* ТЕЛЕФОН */
-        .phone-mockup { width: 300px; height: 600px; background: #111; border-radius: 45px; padding: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); margin: 0 auto; border: 4px solid #333; }
-        .phone-screen { width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1596277258385-48b209d2f2d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover; border-radius: 35px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
-        .ar-ui { position: absolute; bottom: 20px; left: 15px; right: 15px; background: rgba(255,255,255,0.95); padding: 15px; border-radius: 15px; backdrop-filter: blur(10px); }
+        /* --- ИСПРАВЛЕНИЕ: ТЕЛЕФОН --- */
+        .phone-mockup { 
+            width: 320px; 
+            height: 640px; 
+            background: #111; 
+            border-radius: 50px; 
+            padding: 12px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3); 
+            margin: 0 auto; 
+            border: 6px solid #222; 
+        }
+        .phone-screen { 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); /* Надежный фон вместо картинки */
+            border-radius: 40px; 
+            position: relative; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .ar-ui { position: absolute; bottom: 25px; left: 20px; right: 20px; background: rgba(255,255,255,0.95); padding: 20px; border-radius: 20px; backdrop-filter: blur(10px); }
 
         /* ТАЙМЛАЙН */
         .timeline-item { position: relative; padding-left: 25px; margin-bottom: 30px; border-left: 2px solid #eee; }
         .timeline-item::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
         .timeline-month { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.75em; display: block; margin-bottom: 5px; font-weight: 700; }
 
+        /* АДАПТИВ (ЧТОБЫ НЕ РАЗЪЕЗЖАЛОСЬ НА НОУТБУКАХ) */
+        @media (max-width: 1000px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 40px; }
+            .market-circles-container { margin-bottom: 40px; }
+            section { padding: 40px 20px; min-height: auto; }
+            h1 { font-size: 3rem; }
+        }
+        
         @media print { section { page-break-after: always; height: 100vh; border: none; padding: 40px; } body { background: white; } }
     </style>
 </head>
@@ -147,21 +216,42 @@
                     <p>Посетители не скачивают тяжелые приложения ради одного визита. Конверсия <15%. "Артефакт" имеет высокий порог входа (40+ экспонатов).</p>
                 </div>
             </div>
+            
             <div class="grid-2" style="border-top: 1px solid #eee; padding-top: 30px;">
                 <div>
-                    <p class="mono">СРАВНЕНИЕ ЗАТРАТ</p>
+                    <p class="mono">СРАВНЕНИЕ ЗАТРАТ НА ЗАПУСК</p>
                     <div class="chart-container">
-                        <div class="bar-group"><div class="bar" style="height: 100%;"><span class="bar-value">3.5M</span></div><span class="bar-label">Нативное<br>App</span></div>
-                        <div class="bar-group"><div class="bar" style="height: 50%;"><span class="bar-value">1.5M</span></div><span class="bar-label">Аутсорс<br>Web</span></div>
-                        <div class="bar-group"><div class="bar highlight" style="height: 10%;"><span class="bar-value">0.1M</span></div><span class="bar-label" style="color: var(--accent);">Наш<br>Конструктор</span></div>
+                        <div class="bar-group">
+                            <span class="bar-value">3.5M</span>
+                            <div class="bar" style="height: 100%;"></div>
+                            <span class="bar-label">Нативное<br>App</span>
+                        </div>
+                        <div class="bar-group">
+                            <span class="bar-value">1.5M</span>
+                            <div class="bar" style="height: 50%;"></div>
+                            <span class="bar-label">Аутсорс<br>Web</span>
+                        </div>
+                        <div class="bar-group">
+                            <span class="bar-value">0.1M</span>
+                            <div class="bar highlight" style="height: 10%;"></div>
+                            <span class="bar-label" style="color: var(--accent);">Наш<br>Конструктор</span>
+                        </div>
                     </div>
                 </div>
                 <div>
                     <p class="mono">ВОРОНКА ПОТЕРИ ПОЛЬЗОВАТЕЛЯ</p>
                     <div class="funnel-container">
-                        <div class="funnel-step" style="background: #aaa; width: 100%;"><span class="funnel-label">100%<br>Видят QR</span></div>
-                        <div class="funnel-step" style="background: #666; width: 15%;"><span class="funnel-label">15%<br>Скачивают</span><div class="funnel-sub">App Store</div></div>
-                        <div class="funnel-step" style="background: var(--success); width: 100%;"><span class="funnel-label" style="top: 30px;">100%<br>WebAR</span><div class="funnel-sub" style="color: var(--success); font-weight:700;">Наше решение</div></div>
+                        <div class="funnel-step" style="background: #ccc; width: 100%;">
+                            <span class="funnel-label">100%<br>Видят QR</span>
+                        </div>
+                        <div class="funnel-step" style="background: #888; width: 15%;">
+                            <span class="funnel-label">15%<br>Скачивают</span>
+                            <div class="funnel-sub">App Store</div>
+                        </div>
+                        <div class="funnel-step" style="background: var(--success); width: 100%;">
+                            <span class="funnel-label" style="top: 40px;">100%<br>WebAR</span>
+                            <div class="funnel-sub" style="color: var(--success); font-weight:700;">Наше решение</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -192,23 +282,41 @@
         </div>
     </section>
 
-    <section>
+  <section>
         <div class="container">
             <div class="badge" style="background: var(--text); color: white;">ПОТЕНЦИАЛ</div>
-            <div class="grid-2" style="align-items: center;">
-                <div class="market-circles">
-                    <div class="circle tam"><div style="margin-top: 30px;"><span class="market-label" style="color: #1565C0;">TAM (РФ+СНГ)</span><span class="market-value" style="color: #1565C0;">12.5 Млрд ₽</span></div>
-                        <div class="circle sam"><div style="margin-top: 40px;"><span class="market-label" style="color: #0D47A1;">SAM (Доступный)</span><span class="market-value" style="color: #0D47A1;">1.8 Млрд ₽</span></div>
-                            <div class="circle som"><div style="margin-top: 50px;"><span class="market-label">SOM (Цель)</span><span class="market-value">120 Млн ₽</span></div></div>
+            <div class="grid-2">
+                <div style="display: flex; justify-content: center;">
+                    <div class="market-circles-container">
+                        <div class="circle tam">
+                            <span class="market-label" style="color: #1565C0;">TAM (РФ+СНГ)</span>
+                            <span class="market-value" style="color: #1565C0;">12.5 Млрд ₽</span>
+                            <div class="circle sam">
+                                <span class="market-label" style="color: #0D47A1;">SAM (Доступный)</span>
+                                <span class="market-value" style="color: #0D47A1;">1.8 Млрд ₽</span>
+                                <div class="circle som">
+                                    <span class="market-label">SOM (Цель)</span>
+                                    <span class="market-value">120 Млн ₽</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <h2>Сегментация</h2>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;"><strong>3 000+ Музеев:</strong> Нуждаются в импортозамещении izi.TRAVEL.</li>
-                        <li style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;"><strong>Рост рынка:</strong> 15% CAGR (ежегодно).</li>
-                        <li><strong>Драйвер:</strong> "Пушкинская карта" (13 млн пользователей с бюджетом на культуру).</li>
+                        <li style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+                            <strong style="color: var(--accent);">3 000+ Музеев</strong><br>
+                            Нуждаются в импортозамещении платформы izi.TRAVEL.
+                        </li>
+                        <li style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+                            <strong style="color: var(--accent);">Revenue Share</strong><br>
+                            Наша модель: подписка + комиссия с цифровых билетов.
+                        </li>
+                        <li>
+                            <strong style="color: var(--accent);">Новые ниши</strong><br>
+                            Генеалогические агентства (цифровые мемориалы), туризм.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -338,22 +446,28 @@
         </div>
     </section>
 
-  <section style="background: #111; color: white;">
+<section style="background: #111; color: white;">
         <div class="container">
             <div class="grid-2" style="align-items: center;">
                 <div>
-                    <h2 style="color: white;">Экосистема</h2>
+                    <div class="badge" style="border-color: white; color: white;">РЕШЕНИЕ</div>
+                    <h2 style="color: white;">Экосистема<br>«Музей в кармане»</h2>
                     <div style="margin-top: 30px;">
                         <h3 style="color: var(--accent);">1. CMS с ИИ</h3>
-                        <p style="color: #999;">Сотрудник загружает фото -> AI пишет текст -> AI озвучивает. Ни строчки кода.</p>
+                        <p style="color: #bbb;">Сотрудник загружает фото -> AI пишет текст -> AI озвучивает. Ни строчки кода.</p>
                         <h3 style="color: var(--accent);">2. Web-Плеер</h3>
-                        <p style="color: #999;">Посетитель сканирует QR. AR запускается в браузере. Работает на Android/iOS.</p>
+                        <p style="color: #bbb;">Посетитель сканирует QR. AR запускается в браузере. Работает на Android/iOS.</p>
                     </div>
                 </div>
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <div style="position: absolute; top: 15px; left: 15px; color: white; font-weight: 600;">⚫ LIVE AR</div>
-                        <div class="ar-ui"><h4 style="margin:0;">Усадьба N</h4><p style="margin:0; font-size:0.8rem;">Восстановленный фасад</p></div>
+                        <div style="position: absolute; top: 20px; left: 20px; color: white; font-weight: 600;">⚫ LIVE AR</div>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 2px dashed rgba(255,255,255,0.3); width: 150px; height: 150px; border-radius: 20px;"></div>
+                        <div class="ar-ui">
+                            <h4 style="margin:0; font-family: 'Inter'; color: #000;">Усадьба N</h4>
+                            <p style="margin:0; font-size:0.8rem; color: #555;">Восстановленный фасад (XIX в.)</p>
+                            <div style="margin-top: 10px; height: 4px; background: #ddd; width: 100%; border-radius: 2px;"><div style="width: 40%; background: var(--accent); height: 100%; border-radius: 2px;"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
