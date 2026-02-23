@@ -153,10 +153,11 @@
             margin: 0 auto; 
             border: 6px solid #222; 
         }
-        .phone-screen { 
+       .phone-screen { 
             width: 100%; 
             height: 100%; 
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); /* Надежный фон вместо картинки */
+            /* Вставляем фото деревянного зодчества (Тимоневка) */
+            background: url('https://images.unsplash.com/photo-1583162556573-46722650626a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
             border-radius: 40px; 
             position: relative; 
             overflow: hidden; 
@@ -193,7 +194,6 @@
             </p>
             <div style="margin-top: 60px; display: flex; gap: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
                 <div><p class="mono" style="margin-bottom: 5px;">Заявитель / CEO</p><p style="font-family: 'Inter'; font-weight: 600;">Екатерина Тимохина</p></div>
-                <div><p class="mono" style="margin-bottom: 5px;">Технический Лидер (CTO)</p><p style="font-family: 'Inter'; font-weight: 600;">Ирина Красавцева</p></div>
             </div>
         </div>
     </section>
@@ -450,7 +450,7 @@
         <div class="container">
             <div class="grid-2" style="align-items: center;">
                 <div>
-                    <div class="badge" style="border-color: white; color: white;">РЕШЕНИЕ</div>
+                    <div class="badge" style="border-color: white; color: var(--accent);">РЕШЕНИЕ</div>
                     <h2 style="color: white;">Экосистема<br>«Музей в кармане»</h2>
                     <div style="margin-top: 30px;">
                         <h3 style="color: var(--accent);">1. CMS с ИИ</h3>
